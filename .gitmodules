@@ -1,0 +1,6 @@
+[submodule "benchmarks/novelty-bench"]
+	path = benchmarks/novelty-bench
+	url = https://github.com/novelty-bench/novelty-bench
+[submodule "benchmarks/arena-hard-auto"]
+	path = benchmarks/arena-hard-auto
+	url = https://github.com/lmarena/arena-hard-auto
