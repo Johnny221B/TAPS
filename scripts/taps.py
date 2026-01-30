@@ -1,5 +1,5 @@
-from src.methods.adapters.llada_generate import generate as llada_generate
-from src.methods.adapters.trado_generate import generate as trado_generate
+from src.llada_generate import generate as llada_generate
+from src.trado_generate import generate as trado_generate
 
 
 def generate_ids(backbone: str, **kwargs):
