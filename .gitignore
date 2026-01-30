@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+
+# Environments
+.env
+.venv
+conda-env/
+*.yaml.lock
+
+# Logs & outputs
+outputs/
+results/
+logs/
+wandb/
+tensorboard/
+
+# Model checkpoints
+*.pt
+*.ckpt
+*.bin
+*.safetensors
+
+# Datasets
+data/
+datasets/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
