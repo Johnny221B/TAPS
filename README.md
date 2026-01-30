@@ -1,13 +1,14 @@
 # Time-Annealed Perturbation Sampling: Diverse Generation for Diffusion Language Models
 
-**T**ime-**A**nnealed **P**erturbation **S**ampling (TAPS) is an inference-time method for improving **diversity** in diffusion language models without
-sacrificing generation quality.
+[![Project Website](https://img.shields.io/badge/Website-TAPS-blue?style=flat-square)](https://taps-dlm.github.io) [![Paper](https://img.shields.io/badge/Paper-ArXiv-red?style=flat-square)](https://arxiv.org/abs/XXXX.XXXXX) [![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)](./LICENSE)
+
+**T**ime-**A**nnealed **P**erturbation **S**ampling (TAPS) is an inference-time method for improving **diversity** in diffusion language models without sacrificing generation quality.
 
 This repository contains the official implementation of TAPS and the code used to reproduce experiments reported in the paper.
 
 ---
 
-# Method Overview
+## Method Overview
 
 <img src="docs/method.png" width="800"/>
 
@@ -15,12 +16,14 @@ This repository contains the official implementation of TAPS and the code used t
 
 ---
 
-# Supported Backbones
+## Supported Backbones
 
 This repository supports two diffusion language model backbones:
 
-- **[LLaDA-8B-Instruct](https://huggingface.co/GSAI-ML/LLaDA-8B-Instruct)** — loaded via `transformers.AutoModel`
-- **[TraDo-8B-Instruct](https://huggingface.co/Gen-Verse/TraDo-8B-Instruct)** — loaded via `transformers.AutoModelForCausalLM`
+| Backbone | Hugging Face | Loader |
+|----------|--------------|--------|
+| **LLaDA-8B-Instruct** | [GSAI-ML/LLaDA-8B-Instruct](https://huggingface.co/GSAI-ML/LLaDA-8B-Instruct) | `transformers.AutoModel` |
+| **TraDo-8B-Instruct** | [Gen-Verse/TraDo-8B-Instruct](https://huggingface.co/Gen-Verse/TraDo-8B-Instruct) | `transformers.AutoModelForCausalLM` |
 
 ---
 
@@ -66,14 +69,14 @@ accelerate launch benchmarks/writingprompts/run_diversity.py \
   --top_k 50 --top_p 0.9 --min_p 0.0 \
   --num_prompts 50 --num_samples 8 \
   --out_dir outputs/wp
-
 ```
 
+---
 
 ## License
 
-This project is released under the **MIT License**.See the [LICENSE](./LICENSE) file for the full text.
+This project is released under the **MIT License**. See the [LICENSE](./LICENSE) file for the full text.
 
-```text
+```
 SPDX-License-Identifier: MIT
 ```
