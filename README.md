@@ -1,6 +1,6 @@
 # Time-Annealed Perturbation Sampling: Diverse Generation for Diffusion Language Models
 
-[![Project Website](https://img.shields.io/badge/Website-TAPS-blue?style=flat-square)](https://taps-dlm.github.io) [![Paper](https://img.shields.io/badge/Paper-ArXiv-red?style=flat-square)](https://arxiv.org/abs/XXXX.XXXXX) [![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)](./LICENSE)
+[![Project Website](https://img.shields.io/badge/Website-TAPS-blue?style=flat-square)](https://taps-dlm.github.io) [![Paper](https://img.shields.io/badge/Paper-ArXiv-red?style=flat-square)](https://arxiv.org/abs/2601.22629) [![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)](./LICENSE)
 
 **T**ime-**A**nnealed **P**erturbation **S**ampling (TAPS) is an inference-time method for improving **diversity** in diffusion language models without sacrificing generation quality.
 
@@ -72,6 +72,21 @@ accelerate launch benchmarks/writingprompts/run_diversity.py \
 ```
 
 ---
+
+## Citation
+
+```bibtex
+@misc{wu2026timeannealedperturbationsamplingdiverse,
+      title={Time-Annealed Perturbation Sampling: Diverse Generation for Diffusion Language Models}, 
+      author={Jingxuan Wu and Zhenglin Wan and Xingrui Yu and Yuzhe Yang and Yiqiao Huang and Ivor Tsang and Yang You},
+      year={2026},
+      eprint={2601.22629},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2601.22629}, 
+}
+
+```
 
 ## License
 
