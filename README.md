@@ -20,9 +20,9 @@ This repository contains the official implementation of TAPS and the code used t
 
 This repository supports two diffusion language model backbones:
 
-| Backbone | Hugging Face | Loader |
-|----------|--------------|--------|
-| **LLaDA-8B-Instruct** | [GSAI-ML/LLaDA-8B-Instruct](https://huggingface.co/GSAI-ML/LLaDA-8B-Instruct) | `transformers.AutoModel` |
+| Backbone                    | Hugging Face                                                                   | Loader                                |
+| --------------------------- | ------------------------------------------------------------------------------ | ------------------------------------- |
+| **LLaDA-8B-Instruct** | [GSAI-ML/LLaDA-8B-Instruct](https://huggingface.co/GSAI-ML/LLaDA-8B-Instruct)     | `transformers.AutoModel`            |
 | **TraDo-8B-Instruct** | [Gen-Verse/TraDo-8B-Instruct](https://huggingface.co/Gen-Verse/TraDo-8B-Instruct) | `transformers.AutoModelForCausalLM` |
 
 ---
@@ -41,34 +41,44 @@ This repository supports two diffusion language model backbones:
 ### LLaDA
 
 ```bash
-accelerate launch benchmarks/writingprompts/run_diversity.py \
-  --backbone llada \
+cd /mnt/data/wujx/DLM/TAPS
+CUDA_VISIBLE_DEVICES=0,1 accelerate launch --num_processes 2 -m benchmarks.writingprompts.eval_llada_wp \
   --model_path /path/to/llada \
   --mode embedding \
-  --temperature 0.8 \
-  --steps 128 --gen_length 256 --block_length 32 \
-  --cond_noise_start 0.05 --cond_noise_until 0.95 \
-  --cond_noise_anneal cosine \
-  --cond_embed_noise_std 0.05 --cond_embed_psi 1.0 \
-  --num_prompts 50 --num_samples 8 \
-  --out_dir outputs/wp
+  --dataset euclaise/writingprompts \
+  --num_prompts 50 \
+  --num_samples 16 \
+  --temperature 0.7 \
+  --cfg 0.0 \
+  --cond_embed_noise_std 0.35 \
+  --cond_noise_start 0.05 \
+  --cond_noise_until 0.95 \
+  --cond_embed_impl hook \
+  --steps 512 \
+  --gen_length 512 \
+  --block_length 256 \
+  --empty_cache_every 20
 ```
 
 ### TraDo
 
 ```bash
-accelerate launch benchmarks/writingprompts/run_diversity.py \
-  --backbone trado \
-  --model_path /path/to/trado \
+cd /mnt/data/wujx/DLM/TAPS
+CUDA_VISIBLE_DEVICES=0 python -m benchmarks.writingprompts.eval_trado_wp \
+  --run_name trado_embedding_run \
   --mode embedding \
+  --model_path /path/to/trado \
+  --num_prompts 25 \
+  --num_samples 16 \
+  --gen_length 512 \
+  --steps 4 \
+  --block_length 4 \
   --temperature 0.8 \
-  --steps 128 --gen_length 256 --block_length 4 \
-  --cond_noise_start 0.05 --cond_noise_until 0.95 \
-  --cond_noise_anneal cosine \
-  --cond_embed_noise_std 0.20 --cond_embed_psi 1.0 \
-  --top_k 50 --top_p 0.9 --min_p 0.0 \
-  --num_prompts 50 --num_samples 8 \
-  --out_dir outputs/wp
+  --seed 1234 \
+  --cond_embed_noise_std 0.40 \
+  --top_k 0 \
+  --top_p 1.0 \
+  --min_p 0.0
 ```
 
 ---
