@@ -16,7 +16,7 @@ import accelerate
 from transformers import AutoTokenizer, AutoModelForCausalLM
 
 # [IMPORTANT] Import from our NEW file
-from src.methods.adapters.trado_generate import generate, WRITER_INSTR_TEXT
+from src.trado_generate import generate, WRITER_INSTR_TEXT
 # from generate_trado import generate, WRITER_INSTR_TEXT
 
 

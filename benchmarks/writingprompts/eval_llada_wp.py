@@ -13,12 +13,10 @@ import numpy as np
 import torch
 from tqdm import tqdm
 from datasets import load_dataset
-
 import accelerate
 from transformers import AutoTokenizer, AutoModel
 
-# from generate_diversity import generate, WRITER_INSTR_TEXT
-from src.methods.adapters.llada_generate import generate, WRITER_INSTR_TEXT
+from src.llada_generate import generate, WRITER_INSTR_TEXT
 
 
 # ------------------------
@@ -192,7 +190,7 @@ def main():
 
     # misc
     ap.add_argument("--mask_id", type=int, default=126336)
-    ap.add_argument("--out_dir", type=str, default="diversity_runs")
+    ap.add_argument("--out_dir", type=str, default="diversity_runs_llada")
     ap.add_argument("--run_name", type=str, default="",
                     help="if empty, auto timestamp (synced across ranks)")
 
