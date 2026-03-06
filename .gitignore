@@ -33,3 +33,8 @@ datasets/
 
 # OS
 .DS_Store
+
+# Cache
+.cache/
+diversity_runs_llada/
+diversity_runs_trado/

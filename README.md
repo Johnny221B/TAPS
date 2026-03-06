@@ -68,44 +68,13 @@ pip install -r requirements_trado.txt
 ### LLaDA
 
 ```bash
-cd /mnt/data/wujx/DLM/TAPS
-CUDA_VISIBLE_DEVICES=0,1 accelerate launch --num_processes 2 -m benchmarks.writingprompts.eval_llada_wp \
-  --model_path /path/to/llada \
-  --mode embedding \
-  --dataset euclaise/writingprompts \
-  --num_prompts 50 \
-  --num_samples 16 \
-  --temperature 0.7 \
-  --cfg 0.0 \
-  --cond_embed_noise_std 0.35 \
-  --cond_noise_start 0.05 \
-  --cond_noise_until 0.95 \
-  --cond_embed_impl hook \
-  --steps 512 \
-  --gen_length 512 \
-  --block_length 256 \
-  --empty_cache_every 20
+bash scripts/run_llada.sh
 ```
 
 ### TraDo
 
 ```bash
-cd /mnt/data/wujx/DLM/TAPS
-CUDA_VISIBLE_DEVICES=0 python -m benchmarks.writingprompts.eval_trado_wp \
-  --run_name trado_embedding_run \
-  --mode embedding \
-  --model_path /path/to/trado \
-  --num_prompts 25 \
-  --num_samples 16 \
-  --gen_length 512 \
-  --steps 4 \
-  --block_length 4 \
-  --temperature 0.8 \
-  --seed 1234 \
-  --cond_embed_noise_std 0.40 \
-  --top_k 0 \
-  --top_p 1.0 \
-  --min_p 0.0
+bash scripts/run_trado.sh
 ```
 
 ---

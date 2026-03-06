@@ -86,8 +86,7 @@ def safe_write_line(f, obj: Any):
 def main():
     ap = argparse.ArgumentParser("Trado Diversity Eval")
 
-    ap.add_argument("--model_path", type=str,
-                    default="/mnt/data/wujx/DLM/models/Gen-Verse__TraDo-8B-Instruct")
+    ap.add_argument("--model_path", type=str, required=True)
     ap.add_argument("--dataset", type=str, default="euclaise/writingprompts")
     ap.add_argument("--split", type=str, default="")
     ap.add_argument("--prompt_column", type=str, default="")
@@ -166,7 +165,7 @@ def main():
     # Load Model
     set_seed(args.seed + rank, deterministic=args.deterministic)
     model = AutoModelForCausalLM.from_pretrained(
-        args.model_path, trust_remote_code=True, torch_dtype="float16"
+        args.model_path, trust_remote_code=True, torch_dtype="auto"
     ).to(device).eval()
     tokenizer = AutoTokenizer.from_pretrained(
         args.model_path, trust_remote_code=True)
