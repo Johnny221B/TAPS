@@ -27,6 +27,33 @@ This repository supports two diffusion language model backbones:
 
 ---
 
+## Environment Setup
+
+This project uses two separate Python environments:
+
+- `llada`: for LLaDA-related experiments
+- `trado`: for TraDo-related experiments
+
+```bash
+# Clone the repository
+git clone https://github.com/Johnny221B/TAPS.git
+cd TAPS
+
+# Create the llada environment
+python -m venv envs/llada
+source envs/llada/bin/activate
+pip install --upgrade pip
+pip install -r requirements_llada.txt
+
+# Create the trado environment
+python -m venv envs/trado
+source envs/trado/bin/activate
+pip install --upgrade pip
+pip install -r requirements_trado.txt
+```
+
+---
+
 ## Benchmarks
 
 - **GSM8K**
