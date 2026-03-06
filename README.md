@@ -39,17 +39,9 @@ This project uses two separate Python environments:
 git clone https://github.com/Johnny221B/TAPS.git
 cd TAPS
 
-# Create the llada environment
-python -m venv envs/llada
-source envs/llada/bin/activate
-pip install --upgrade pip
-pip install -r requirements_llada.txt
-
-# Create the trado environment
-python -m venv envs/trado
-source envs/trado/bin/activate
-pip install --upgrade pip
-pip install -r requirements_trado.txt
+uv venv
+uv pip install -r requirements.txt
+uv pip install flash-attn --no-build-isolation
 ```
 
 ---
